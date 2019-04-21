@@ -1,6 +1,9 @@
 const express = require('express');
+const mongoose = require('mongoose');
+const keys = require('./config/keys');
 require('./services/passport');
 
+mongoose.connect(keys.mongoURI);
 const app = express();
 
 // app is the express server
@@ -13,8 +16,12 @@ const app = express();
 // res.send({ hi: 'there' });
 // });
 
+//
+
 
 // Call authRoutes from from index to connect the routes to the app object
+
+
 require('./routes/authRoutes')(app);
 
 
