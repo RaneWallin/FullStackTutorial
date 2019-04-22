@@ -16,6 +16,13 @@ passport.serializeUser((user, done) => {
   done(null, user.id);
 });
 
+// take id and turn it into a mongoose model user
+passport.deserializeUser((id, done) => {
+  User.findById(id).then(user => {
+    done(null, user);
+  });
+});
+
 // Telling passport what strategy we want to use for authentication
 // GoogleStrategy(configurationOptions, function)
 passport.use(

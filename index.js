@@ -1,8 +1,10 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const keys = require('./config/keys');
-require('./models/User');
-require('./services/passport');
+const express = require("express");
+const mongoose = require("mongoose");
+const keys = require("./config/keys");
+const cookieSession = require("cookie-session");
+const passport = require("passport");
+require("./models/User");
+require("./services/passport");
 
 // connect to mongoose and pass the provided URI
 mongoose.connect(keys.mongoURI);
@@ -10,25 +12,29 @@ mongoose.connect(keys.mongoURI);
 // thing
 const app = express();
 
-//
+// Tells express we are using cookies
+app.use(
+  cookieSession({
+    maxAge: 30 * 24 * 60 * 60 * 1000, // 30 days
+    keys: [keys.cookieKey] // encryption key for cookie
+  })
+);
 
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Call authRoutes from from index to connect the routes to the app object
-
-
-require('./routes/authRoutes')(app);
-
+require("./routes/authRoutes")(app);
 
 // get port dynamically from environment variable or use 8080 by default
 const PORT = process.env.PORT || 5000;
 
 // instructs express to tell node to listen to incoming traffic on provided
-// port 
+// port
 app.listen(PORT);
 
-
-// Express methods: get (get info), post(update property), 
-// put (add new or update all properties), delete (remove), 
+// Express methods: get (get info), post(update property),
+// put (add new or update all properties), delete (remove),
 // patch (update multiple properties)
 
 // http://localhost:5000/auth/google/callback
