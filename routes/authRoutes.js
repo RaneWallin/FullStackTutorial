@@ -14,6 +14,14 @@ module.exports = app => {
   // token to authenticate the user via passport
   app.get("/auth/google/callback", passport.authenticate("google"));
 
+  // log out a user
+  app.get("/api/logout", (req, res) => {
+    // provided by passport. Invalidates the cookie to log the user out
+    req.logout();
+    res.send(req.user);
+  });
+
+  // test
   app.get("/api/current_user", (req, res) => {
     res.send(req.user);
   });
