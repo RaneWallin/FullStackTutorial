@@ -2,19 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const keys = require('./config/keys');
 require('./services/passport');
+require('./models/user');
 
+// connect to mongoose and pass the provided URI
 mongoose.connect(keys.mongoURI);
-const app = express();
 
-// app is the express server
-// .get() creates a new route handler
-// "/"" is the route
-// req  (request) - incoming request
-// res (response) - the response that is being send back
-// res.send - close request and send back response with json data
-// app.get('/', (req, res) => {
-// res.send({ hi: 'there' });
-// });
+
+const app = express();
 
 //
 
@@ -38,3 +32,13 @@ app.listen(PORT);
 // patch (update multiple properties)
 
 // http://localhost:5000/auth/google/callback
+
+// app is the express server
+// .get() creates a new route handler
+// "/"" is the route
+// req  (request) - incoming request
+// res (response) - the response that is being send back
+// res.send - close request and send back response with json data
+// app.get('/', (req, res) => {
+// res.send({ hi: 'there' });
+// });
