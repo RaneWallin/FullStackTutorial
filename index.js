@@ -12,6 +12,11 @@ mongoose.connect(keys.mongoURI);
 // thing
 const app = express();
 
+// app.use() adds middleware to express
+// each incoming request passes through
+// the middleware and those middlewares
+// act on it in some manner
+
 // Tells express we are using cookies
 app.use(
   cookieSession({
