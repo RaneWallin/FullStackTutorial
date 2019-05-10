@@ -5,7 +5,7 @@ import "./App.css";
 function App() {
   return (
     <div className="App">
-      <h2>yo</h2>
+      <a href="/auth/google">Sign in with google</a>
     </div>
   );
 }
