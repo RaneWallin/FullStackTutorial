@@ -9,7 +9,7 @@ const User = mongoose.model("users");
 // called with user that is returned from the done() callback in GoogleStrategy
 passport.serializeUser((user, done) => {
   // user is the model returned from MongoDB
-  // user.id is the id assigned to the record by MongoDB
+  // user.id is the id assigned to the rcd ecord by MongoDB
   // using mongo ID because if we use multiple
   // authentication strategies there may be different
   // profile IDs, but the Mondo ID will stay the same
