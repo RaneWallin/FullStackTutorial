@@ -8,7 +8,7 @@ class Header extends Component {
           <a href="#" className="left brand-logo">
             Emaily
           </a>
-          <ul id="nav-mobile" className="right hide-on-med-and-down">
+          <ul className="right">
             <li>
               <a href="#">Login with google</a>
             </li>
