@@ -12,13 +12,19 @@ module.exports = app => {
 
   // when user is redirected back to auth/google/callback use the returned
   // token to authenticate the user via passport
-  app.get("/auth/google/callback", passport.authenticate("google"));
+  app.get(
+    "/auth/google/callback",
+    passport.authenticate("google"),
+    (req, res) => {
+      res.redirect("/surveys");
+    }
+  );
 
   // log out a user
   app.get("/api/logout", (req, res) => {
     // provided by passport. Invalidates the cookie to log the user out
     req.logout();
-    res.send(req.user);
+    res.redirect("/");
   });
 
   // test
