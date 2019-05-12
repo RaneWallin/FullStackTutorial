@@ -20,7 +20,12 @@ class Header extends Component {
             <Payments />
           </li>,
           <li style={{ margin: "0 10px" }} key="3">
-            Credits: {this.props.auth.credits}
+            <span
+              className="brown darken-1 z-depth-1"
+              style={{ padding: "10px 15px" }}
+            >
+              Credits: {this.props.auth.credits}
+            </span>
           </li>,
           <li key="2">
             <a href="/api/logout">Logout</a>
@@ -31,7 +36,10 @@ class Header extends Component {
   render() {
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div
+          style={{ padding: "0 10px" }}
+          className="nav-wrapper brown darken-2"
+        >
           <Link
             to={this.props.auth ? "/surveys" : "/"}
             className="left brand-logo"

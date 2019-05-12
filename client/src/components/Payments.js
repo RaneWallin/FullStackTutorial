@@ -13,7 +13,7 @@ class Payments extends Component {
         name="Emaily"
         description="$5 for 5 credits"
       >
-        <button className="btn">Add credits</button>
+        <button className="btn deep-orange darken-4">Add credits</button>
       </StripeCheckout>
     );
   }
