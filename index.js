@@ -27,9 +27,11 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(express.json());
 
 // Call authRoutes from from index to connect the routes to the app object
 require("./routes/authRoutes")(app);
+require("./routes/billingRoutes")(app);
 
 // get port dynamically from environment variable or use 8080 by default
 const PORT = process.env.PORT || 5000;
