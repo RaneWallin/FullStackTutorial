@@ -16,6 +16,7 @@ const app = express();
 // each incoming request passes through
 // the middleware and those middlewares
 // act on it in some manner
+app.use(express.json());
 
 // Tells express we are using cookies
 app.use(
@@ -27,7 +28,6 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.json());
 
 // Call authRoutes from from index to connect the routes to the app object
 require("./routes/authRoutes")(app);
