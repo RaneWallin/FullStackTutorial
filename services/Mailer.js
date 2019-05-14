@@ -50,11 +50,12 @@ class Mailer extends helper.Mail {
     });
 
     try {
-      const response = this.sgApi.API(request);
+      const response = await this.sgApi.API(request);
 
       return response;
     } catch (err) {
       console.log(err);
+      return err;
     }
   }
 }
