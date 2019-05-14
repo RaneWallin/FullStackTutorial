@@ -21,6 +21,13 @@ module.exports = app => {
 
     const mailer = new Mailer(survey, surveyTemplate(survey));
 
-    await survey.save();
+    try {
+      await mailer.send();
+      res.status(200).json({ message: "ok" });
+    } catch (err) {
+      console.log(err);
+    }
+
+    //await survey.save();
   });
 };
