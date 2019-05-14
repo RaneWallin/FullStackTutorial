@@ -33,6 +33,7 @@ app.use(passport.session());
 // Call authRoutes from from index to connect the routes to the app object
 require("./routes/authRoutes")(app);
 require("./routes/billingRoutes")(app);
+require("./routes/surveyRoutes")(app);
 
 // only runs in productions
 if (process.env.NODE_ENV === "production") {
